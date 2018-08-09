@@ -1,21 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+
+
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="14dp"
+        app:srcCompat="@color/colorAccent"
+        tools:ignore="UnknownId" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/FRUser"
+        android:layout_width="217dp"
         android:layout_height="wrap_content"
-        android:text="Hola"/>
+        android:layout_alignBottom="@+id/fab"
+        android:layout_alignParentStart="true"
+        android:text="Hola perro del mal" />
 
-    <ImageButton
-        android:id="@+id/AddUser"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/FRUser"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="153dp"
+            android:layout_height="97dp"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mmmmmmm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/popopo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/popo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_input_add" />
-    </LinearLayout>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="151dp"
+        android:text="Habitantes" />
+
+    <ListView
+        android:id="@+id/contactos"
+        android:layout_width="match_parent"
+        android:layout_height="439dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" >
+
+    </ListView>
+
+</RelativeLayout>
 
 
 

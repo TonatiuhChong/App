@@ -3,8 +3,6 @@ package com.example.hombr.menutester;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -20,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.hombr.menutester.Fragmentos.ControlFragment;
+import com.example.hombr.menutester.Fragmentos.PermisosFragment;
+import com.example.hombr.menutester.Fragmentos.ReconocimientoFragment;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,6 +32,8 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.OnConnectionFailedListener {
@@ -44,11 +47,12 @@ public class MainActivity extends AppCompatActivity
     private android.support.v7.widget.Toolbar mToolbar;
     private FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String refreshedToken= FirebaseInstanceId.getInstance().getToken();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,7 +65,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //******Login mAuth
-        mAuth = FirebaseAuth.getInstance();
+            mAuth=FirebaseAuth.getInstance();
+  //      FirebaseUser user = mAuth.getCurrentUser();
+  //      loadUser(user);
+
             View hView =  navigationView.getHeaderView(0);
             Usuario = (TextView) hView.findViewById(R.id.TxtUsuario);
             Email = (TextView) hView.findViewById(R.id.TxtEmail);
@@ -78,7 +85,27 @@ public class MainActivity extends AppCompatActivity
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
     }
+/*
+    private void loadUser(FirebaseUser user) {
+        if (user  != null) {
+            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(displayName)
+                    .setPhotoUri(Uri.parse(profileImageUrl))
+                    .build();
 
+            user.updateProfile(profile)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
+
+*/
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -135,7 +162,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
             fm.beginTransaction().replace(R.id.escenario, new PermisosFragment()).commit();
         } else if (id == R.id.nav_manage) {
-
+            startActivity(new Intent(this, SettingsActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -171,6 +198,11 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         }
+
+        if (mAuth.getCurrentUser() == null) {
+            Toast.makeText(this, "No detecta al usuario", Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }

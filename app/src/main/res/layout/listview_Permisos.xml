@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/PHabitacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Habitación"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/PTSensorL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sensor de Luz" />
+
+        <TextView
+            android:id="@+id/PVSensorL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Valor Sensor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/PTSensorA"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sensor Ambiental" />
+
+        <TextView
+            android:id="@+id/PVSensorA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Valor Sensor ambiental" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/PTSensorP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sensor de presencia" />
+
+        <TextView
+            android:id="@+id/PVSensorP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Valor Sensor Presenscia" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
